@@ -35,7 +35,7 @@ if len(sys.argv) >= 3:
 			if '0x' not in sys.argv[2]:
 				if int(sys.argv[2]) >= 206:
 					if int(sys.argv[2]) == 206:
-						print "Found extra-leet key: 1337"
+						print "Found leet key: 1337"
 						break
 				else:
 					print "Value has to be at least 206 to even contain \'1337\' string to small! (Try normal mode)"
@@ -46,11 +46,18 @@ if len(sys.argv) >= 3:
 					print "Found leet key: " + key
 					cracked = True
 			else:
-				if sum > int(sys.argv[2], 16):
-					key = "1337"
-				elif sum == int(sys.argv[2], 16):
-					print "Found leet key: " + key
-					cracked = True
+				if int(sys.argv[2], 16) >= 0xCE:
+					if int(sys.argv[2], 16) == 0xCE:
+						print "Found leet key: 1337"
+						break
+					if sum > int(sys.argv[2], 16):
+						key = "1337"
+					elif sum == int(sys.argv[2], 16):
+						print "Found leet key: " + key
+						cracked = True
+				else:
+					print "Value has to be at least 0xCE to even contain \'1337\' string to small! (Try normal mode)"
+					break
 	if sys.argv[1] == "extra-leet":
 		key = "1337x1337"
 		while not cracked:	
@@ -70,11 +77,18 @@ if len(sys.argv) >= 3:
 							print "Found extra-leet key: " + key
 							cracked = True
 					else:
-						if sum > int(sys.argv[2], 16):
-							key = "1337x1337"
-						elif sum == int(sys.argv[2], 16):
-							print "Found extra-leet key: " + key
-							cracked = True
+						if int(sys.argv[2], 16) >= 0x214:
+							if int(sys.argv[2], 16) == 0x214:
+								print "Found extra-leet key: 1337x1337"
+								break
+							if sum > int(sys.argv[2], 16):
+								key = "1337x1337"
+							elif sum == int(sys.argv[2], 16):
+								print "Found extra-leet key: " + key
+								cracked = True
+						else:
+							print "Value has to be at least 0x214 to even contain \'1337x1337\' string to small! (Try normal mode)"
+							break
 	if sys.argv[1] == "extreme-leet":
 		key = "1337x1337x1337"
 		while not cracked:
@@ -94,11 +108,18 @@ if len(sys.argv) >= 3:
 								print "Found extreme-leet key: " + key
 								cracked = True
 						else:
-							if sum > int(sys.argv[2], 16):
-								key = "1337x1337x1337"
-							elif sum == int(sys.argv[2], 16):
-								print "Found extreme-leet key: " + key
-								cracked = True
+							if int(sys.argv[2], 16) >= 0x35A:
+								if int(sys.argv[2], 16) == 0x35A:
+									print "Found extreme-leet key: 1337x1337x1337"
+									break
+								if sum > int(sys.argv[2], 16):
+									key = "1337x1337x1337"
+								elif sum == int(sys.argv[2], 16):
+									print "Found extreme-leet key: " + key
+									cracked = True
+							else:
+								print "Value has to be at least 0x35A to even contain \'1337x1337x1337\' string to small! (Try normal mode)"
+								break
 else:
 	if len(sys.argv) == 2:
 		print
@@ -116,3 +137,4 @@ else:
 		print
 	else:
 		print "Usage: ./1337Keys [mode] [hex or dec]"
+		
