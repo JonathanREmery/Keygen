@@ -32,52 +32,76 @@ if len(sys.argv) >= 3:
 		while not cracked:	
 			key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|\:\'\",<.>/?`~\\ ")
 			sum = check(key)
-			if '0x' not in sys.argv[2]:
-				if sum > int(sys.argv[2]):
-					key = "1337"
-				elif sum == int(sys.argv[2]):
-					print "Found leet key: " + key
-					cracked = True
+			if int(sys.argv[2]) >= 206:
+				if int(sys.argv[2]) == 206:
+					print "Found extra-leet key: 1337"
+					break
+				else:
+					if '0x' not in sys.argv[2]:
+						if sum > int(sys.argv[2]):
+							key = "1337"
+						elif sum == int(sys.argv[2]):
+							print "Found leet key: " + key
+							cracked = True
+					else:
+						if sum > int(sys.argv[2], 16):
+							key = "1337"
+						elif sum == int(sys.argv[2], 16):
+							print "Found leet key: " + key
+							cracked = True
 			else:
-				if sum > int(sys.argv[2], 16):
-					key = "1337"
-				elif sum == int(sys.argv[2], 16):
-					print "Found leet key: " + key
-					cracked = True
+				print "Value has to be at least 206 to even contain \'1337\' string to small! (Try normal mode)"
+				break
 	if sys.argv[1] == "extra-leet":
 		key = "1337x1337"
 		while not cracked:	
-			key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|\:\'\",<.>/?`~\\ ")
-			sum = check(key)
-			if '0x' not in sys.argv[2]:
-				if sum > int(sys.argv[2]):
-					key = "1337x1337"
-				elif sum == int(sys.argv[2]):
-					print "Found extra-leet key: " + key
-					cracked = True
+			if int(sys.argv[2]) >= 532:
+				if int(sys.argv[2]) == 532:
+					print "Found extra-leet key: 1337x1337"
+					break
+				else:
+					key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|\:\'\",<.>/?`~\\ ")
+					sum = check(key)
+					if '0x' not in sys.argv[2]:
+						if sum > int(sys.argv[2]):
+							key = "1337x1337"
+						elif sum == int(sys.argv[2]):
+							print "Found extra-leet key: " + key
+							cracked = True
+					else:
+						if sum > int(sys.argv[2], 16):
+							key = "1337x1337"
+						elif sum == int(sys.argv[2], 16):
+							print "Found extra-leet key: " + key
+							cracked = True
 			else:
-				if sum > int(sys.argv[2], 16):
-					key = "1337x1337"
-				elif sum == int(sys.argv[2], 16):
-					print "Found extra-leet key: " + key
-					cracked = True
+				print "Value has to be at least 532 to even contain \'1337x1337\' string to small! (Try normal mode)"
+				break
 	if sys.argv[1] == "extreme-leet":
 		key = "1337x1337x1337"
-		while not cracked:	
-			key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|\:\'\",<.>/?`~\\ ")
-			sum = check(key)
-			if '0x' not in sys.argv[2]:
-				if sum > int(sys.argv[2]):
-					key = "1337x1337x1337"
-				elif sum == int(sys.argv[2]):
-					print "Found extreme-leet key: " + key
-					cracked = True
+		while not cracked:
+			if int(sys.argv[2]) >= 858:	
+				if int(sys.argv[2]) == 858:
+					print "Found extreme-leet key: 1337x1337x1337"
+					break
+				else:
+						key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|\:\'\",<.>/?`~\\ ")
+						sum = check(key)
+						if '0x' not in sys.argv[2]:
+							if sum > int(sys.argv[2]):
+								key = "1337x1337x1337"
+							elif sum == int(sys.argv[2]):
+								print "Found extreme-leet key: " + key
+								cracked = True
+						else:
+							if sum > int(sys.argv[2], 16):
+								key = "1337x1337x1337"
+							elif sum == int(sys.argv[2], 16):
+								print "Found extreme-leet key: " + key
+								cracked = True
 			else:
-				if sum > int(sys.argv[2], 16):
-					key = "1337x1337x1337"
-				elif sum == int(sys.argv[2], 16):
-					print "Found extreme-leet key: " + key
-					cracked = True
+				print "Value has to be at least 858 to even contain \'1337x1337x1337\' string to small! (Try normal mode)"
+				break
 else:
 	if len(sys.argv) == 2:
 		print
