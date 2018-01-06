@@ -120,6 +120,44 @@ if len(sys.argv) >= 3:
 							else:
 								print "Value has to be at least 0x35A to even contain \'1337x1337x1337\' string to small! (Try normal mode)"
 								break
+	if sys.argv[1] == "name":
+		while not cracked:
+			name = sys.argv[2]
+			if '0x' in sys.argv[3]:
+				name_sum = check(name)
+				if int(sys.argv[3], 16) < name_sum:
+					print "Value has to be at least " + str(hex(name_sum)) + " to even contain \'" + name + "\' string to small! (Try normal mode)"
+					break
+				elif int(sys.argv[3], 16) == name_sum:
+					print "Found name key: " + name
+					break
+				else:
+					key = name
+					key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|:,<.>/?`~")
+					sum = check(key)
+					if sum > int(sys.argv[3], 16):
+							key = name
+					elif sum == int(sys.argv[3], 16):
+						print "Found name key: " + key
+						cracked = True
+			else:
+				name_sum = check(name)
+				if int(sys.argv[3], 16) > name_sum:
+					print "Value has to be at least " + str(name_sum) + " to even contain \'" + name + "\' string to small! (Try normal mode)"
+					break
+				elif int(sys.argv[3], 16) == name_sum:
+					print "Found name key: " + name
+					break
+				else:
+					key = name
+					key += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{[]|:,<.>/?`~")
+					sum = check(key)
+					if sum > int(sys.argv[3]):
+							key = name
+					elif sum == int(sys.argv[3]):
+						print "Found name key: " + key
+						cracked = True
+
 else:
 	if len(sys.argv) == 2:
 		print
@@ -131,6 +169,7 @@ else:
 		print "leet 		-		Only finds keys that begin with 1337"
 		print "extra-leet 	-		Only finds keys that begin with 1337x1337"
 		print "extreme-leet 	-		Only finds keys that begin with 1337x1337x1337"
+		print "name 		-		Only finds keys that begin with your name"
 		print
 		print "Example: ./1337Keys extra-leet 0x302"
 		print "Found extra-leet key: 1337x1337ww"
